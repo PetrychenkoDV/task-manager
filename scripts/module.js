@@ -1,61 +1,52 @@
-/**
- * Created by Dmytro on 08.04.2017.
- */
-addDelIcon();
-addNewTaskEnter();
-deleteTask();
-
-//add new task by button 'Add' from input
-function addNewTask() {
-	var listItem = document.createElement('li');
-	var taskContent = document.getElementById('taskInput').value;
-	var newTask = document.createTextNode(taskContent);
-	listItem.appendChild(newTask);
-	if(taskContent === ''){
-		alert('you must write something!');
-	} else {
-		document.getElementById('taskLists').appendChild(listItem);
+console.clear();
+//toggle class style task
+var listArr = document.getElementsByClassName('taskList-item');
+for(var i = 0; i < listArr.length; i++){
+	listArr[i].appendChild(createDelIcon());
+	listArr[i].onclick = function () {
+		this.classList.toggle('completed');
 	}
-	document.getElementById('taskInput').value = '';
-	addDelIcon();
-	deleteTask();
 }
-//add new task by key enter from input
-function addNewTaskEnter() {
-	var newTask = document.getElementById('taskInput');
-	newTask.addEventListener('keyup', function (ev) {
-		if(ev.keyCode === 13){
-			addNewTask();
-		}
-	}, false);
-	addDelIcon();
-	deleteTask();
-}
-//add del icon
-function addDelIcon() {
-	var listArr = document.getElementsByTagName('li');
-	for(var i = 0; i < listArr.length; i++){
-		var delIconContainer = document.createElement('span');
-		var delIcon = document.createTextNode('\u00D7');
-		delIconContainer.className = 'completed-task';
-		delIconContainer.appendChild(delIcon);
-		listArr[i].appendChild(delIconContainer);
-	}
+//create delete icon
+function createDelIcon() {
+	var span = document.createElement('span');
+	var content = document.createTextNode('\u00D7');
+	span.appendChild(content);
+	span.className = 'taskDel-icon';
+	return span;
 }
 //delete task
-function deleteTask() {
-	var delTask = document.getElementsByClassName('completed-task');
-	for(var i = 0; i < delTask.length; i++){
-		delTask[i].onclick = function () {
-			var delItem = this.parentElement;
-			delItem.parentElement.removeChild(delItem);
-		}
+var delListArr = document.getElementsByClassName('taskDel-icon');
+for(var j = 0; j < delListArr.length; j++){
+	delListArr[j].onclick = function () {
+		var delListItem = this.parentNode;
+		delListItem.parentNode.removeChild(delListItem);
 	}
 }
-//add checked style
-	var taskList = document.querySelector('ul');
-	taskList.addEventListener('click', function (ev) {
-		if (ev.target.tagName === 'li'){
-			ev.target.classList.toggle('test-class');
-		}
-	}, false);
+//add task by click on "add"
+function createNewTask() {
+	var newTask = document.createElement('li');
+	newTask.appendChild(document.createTextNode(document.getElementById('inputTask').value));
+	var delIcon = createDelIcon();
+	delIcon.addEventListener('click', function () {
+		var delListItem = this.parentNode;
+		delListItem.parentNode.removeChild(delListItem);
+	});
+	newTask.appendChild(delIcon);
+	newTask.addEventListener('click', function () {
+		this.classList.toggle('completed');
+	});
+	if(document.getElementById('inputTask').value === ''){
+		alert('You must write something!!!');
+	} else {
+		document.getElementById('taskList').appendChild(newTask);
+	}
+	document.getElementById('inputTask').value = '';
+}
+//add task by put enter in input-field
+var putEnter = document.getElementById('inputTask');
+putEnter.addEventListener('keyup', function (ev) {
+	if(ev.keyCode === 13){
+		createNewTask();
+	}
+}, false);
