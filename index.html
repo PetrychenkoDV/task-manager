@@ -13,20 +13,28 @@
 	<div class="taskList-container">
 		<div class="taskList-header">
 			<h2>My To Do list</h2>
-			<input type="text" id="inputTask" class="inputTask" placeholder="Title...">
-			<span onclick="createNewTask()" class="add-span">Add</span>
+				<div class="input-container">
+					<input type="text" id="inputTask" class="inputTask" placeholder="Title...">
+					<select id="select-priority">
+						<option>norm</option>
+						<option>fast</option>
+						<option>hard</option>
+					</select>
+					<span onclick="createNewTask()" class="add-span">Add</span>
+					<button type="button" class="sort-button" onclick="sortTaskList()">sort</button>
+				</div>
 		</div>
 		<ul class="taskList" id="taskList">
-			<li class="taskList-item">AAA</li>
-			<li class="taskList-item">BBB</li>
-			<li class="taskList-item">CCC</li>
+			<li class="taskList-item fast">AAA</li>
+			<li class="taskList-item completed">BBB</li>
+			<li class="taskList-item completed">CCC</li>
 			<li class="taskList-item">DDD</li>
-			<li class="taskList-item">EEE</li>
-			<li class="taskList-item">FFF</li>
+			<li class="taskList-item hard">EEE</li>
+			<li class="taskList-item hard">FFF</li>
 			<li class="taskList-item">JJJ</li>
 			<li class="taskList-item">HHH</li>
 		</ul>
 	</div>
-	<script src="js/build.js"></script>
+	<script src="scripts/module.js"></script>
 </body>
 </html>

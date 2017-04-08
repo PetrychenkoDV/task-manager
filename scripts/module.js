@@ -36,6 +36,11 @@ function createNewTask() {
 	newTask.addEventListener('click', function () {
 		this.classList.toggle('completed');
 	});
+	//add class-priority for task
+	var select = document.getElementById('select-priority');
+	var priorityClass = select.options[select.selectedIndex].value;
+	newTask.className = priorityClass;
+	//if input empty
 	if(document.getElementById('inputTask').value === ''){
 		alert('You must write something!!!');
 	} else {
@@ -50,3 +55,30 @@ putEnter.addEventListener('keyup', function (ev) {
 		createNewTask();
 	}
 }, false);
+
+//sort task list by priority
+function sortTaskList() {
+	var taskListArr = document.getElementsByClassName('taskList-item');
+	var normalTaskArr= [], hardTaskArr = [], fastTaskArr = [];
+	for (var i = 0; i < taskListArr.length; i++){
+		var listClass = '';
+		listClass = taskListArr[i].getAttribute('class');
+		if(listClass === 'taskList-item fast'){
+			fastTaskArr.push(taskListArr[i]);
+		} else if (listClass === 'taskList-item hard'){
+			hardTaskArr.push(taskListArr[i]);
+		} else {
+			normalTaskArr.push(taskListArr[i]);
+		}
+	}
+	console.log(fastTaskArr.join(', '));
+	// var taskContainer = document.getElementById('taskList');
+	// for(var j = 1; j < fastTaskArr.length; j++){
+	// 	taskContainer.appendChild(fastTaskArr[j]);
+	// }
+	for(var t = 0; t < fastTaskArr.length; t++){
+		for(var y = 0; y < fastTaskArr[t].length; y++){
+			console.log(fastTaskArr[t].[y]);
+		}
+	}
+}

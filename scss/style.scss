@@ -21,12 +21,24 @@ h2 {
     clear: both;
   }
 }
+.input-container {
+  display: flex;
+}
+
 .inputTask {
   border: none;
-  width: 75%;
+  width: 55%;
   padding: 10px;
   float: left;
   font-size: 16px;
+}
+.task-priority {
+  width: 20%;
+  font-size: 16px;
+  padding: 10px;
+  border-style: none;
+  text-indent: 0.01px;
+  text-overflow: '';
 }
 .add-span {
   padding: 10px;
@@ -43,6 +55,10 @@ h2 {
     background-color: #bbb;
   }
 }
+.sort-button {
+  border: 0;
+  background-color: goldenrod;
+}
 .taskList-container {
   box-sizing: inherit;
   margin: 0 auto;
@@ -52,10 +68,6 @@ h2 {
   padding: 10px;
   background-image: url(../images/body.jpg);
   background-size: cover;
-}
-ul {
-  margin: 0;
-  padding: 0;
 }
 ul li {
   list-style-type: none;
@@ -69,6 +81,12 @@ ul li {
   }
   &:hover {
     background-color: #ddd;
+  }
+  &.fast {
+    background-color: rgba(27, 255, 0, 0.37);
+  }
+  &.hard {
+    background-color: rgba(223, 21, 17, 0.37);
   }
   &.completed {
     background: rgba(56, 42, 42, 0.55);
@@ -92,7 +110,6 @@ ul li {
 .taskList {
   padding-top: 30px;
 }
-
 .taskDel-icon {
   position: absolute;
   right: 0;
