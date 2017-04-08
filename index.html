@@ -5,6 +5,7 @@
 	<meta name="viewport"
 				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="css/style.css">
 	<title>Document</title>
 </head>
 <body>
@@ -24,18 +25,18 @@
 		<!--</ul>-->
 	<!--</div>-->
 	<div class="task-container">
-		<div id="headerContainer" class="header">
+		<div id="headerContainer" class="task-header">
 			<h2>My To Do List</h2>
-			<input type="text" id="listInput" placeholder="To do...">
-			<span onclick="newElement()" class="task-button">Add</span>
+			<input type="text" id="taskInput" placeholder="To do...">
+			<span onclick="newTask()" class="add-task-button">Add</span>
 		</div>
 		<ul id="taskLists">
 			<li>Jquery</li>
-			<li class="task-checked">Pay bills</li>
-			<li>Meet George</li>
-			<li>Buy eggs</li>
-			<li>Read a book</li>
-			<li>Organize office</li>
+			<li class="task-checked">Angular</li>
+			<li>Css</li>
+			<li>Sass</li>
+			<li>Scripts</li>
+			<li>Bootstrap4</li>
 		</ul>
 	</div>
 	<script src="js.js"></script>
