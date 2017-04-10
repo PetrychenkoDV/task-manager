@@ -39,7 +39,7 @@ function createNewTask() {
 	//add class-priority for task
 	var select = document.getElementById('select-priority');
 	var priorityClass = select.options[select.selectedIndex].value;
-	newTask.className = priorityClass;
+	newTask.className = 'taskList-item ' + priorityClass;
 	//if input empty
 	if(document.getElementById('inputTask').value === ''){
 		alert('You must write something!!!');
@@ -55,30 +55,28 @@ putEnter.addEventListener('keyup', function (ev) {
 		createNewTask();
 	}
 }, false);
-
 //sort task list by priority
 function sortTaskList() {
 	var taskListArr = document.getElementsByClassName('taskList-item');
-	var normalTaskArr= [], hardTaskArr = [], fastTaskArr = [];
-	for (var i = 0; i < taskListArr.length; i++){
-		var listClass = '';
-		listClass = taskListArr[i].getAttribute('class');
-		if(listClass === 'taskList-item fast'){
-			fastTaskArr.push(taskListArr[i]);
-		} else if (listClass === 'taskList-item hard'){
-			hardTaskArr.push(taskListArr[i]);
+	var fastTaskListArr = [], hardTaskListArr = [], normTaskListArr = [];
+	for(var i = (taskListArr.length -1); i >= 0; i--){
+		if(taskListArr[i].className === 'taskList-item fast'){
+			fastTaskListArr.push(taskListArr[i]);
+		} else if (taskListArr[i].className === 'taskList-item hard') {
+			hardTaskListArr.push(taskListArr[i]);
 		} else {
-			normalTaskArr.push(taskListArr[i]);
+			normTaskListArr.push(taskListArr[i]);
 		}
+		taskListArr[i].parentNode.removeChild(taskListArr[i]);
 	}
-	console.log(fastTaskArr.join(', '));
-	// var taskContainer = document.getElementById('taskList');
-	// for(var j = 1; j < fastTaskArr.length; j++){
-	// 	taskContainer.appendChild(fastTaskArr[j]);
-	// }
-	for(var t = 0; t < fastTaskArr.length; t++){
-		for(var y = 0; y < fastTaskArr[t].length; y++){
-			console.log(fastTaskArr[t].[y]);
-		}
+	var taskListContainer = document.getElementById('taskList');
+	addSortedTask(fastTaskListArr, taskListContainer);
+	addSortedTask(hardTaskListArr, taskListContainer);
+	addSortedTask(normTaskListArr, taskListContainer);
+}
+//add sorted tasklist element
+function addSortedTask(listArr, parentContainer) {
+	for(var i = 0; i < listArr.length; i++){
+		parentContainer.appendChild(listArr[i]);
 	}
 }

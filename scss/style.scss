@@ -76,6 +76,10 @@ ul li {
   padding: 12px 8px 12px 40px;
   background: rgba(251, 251, 251, 0.35);
   font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 50px;
   &:nth-child(odd){
     background-color: rgba(210, 210, 210, 0.25);
   }
@@ -84,9 +88,15 @@ ul li {
   }
   &.fast {
     background-color: rgba(27, 255, 0, 0.37);
+    &:hover {
+      background-color: rgba(22, 155, 0, 0.31);
+    }
   }
   &.hard {
     background-color: rgba(223, 21, 17, 0.37);
+    &:hover {
+      background-color: rgba(142, 14, 11, 0.37);
+    }
   }
   &.completed {
     background: rgba(56, 42, 42, 0.55);
